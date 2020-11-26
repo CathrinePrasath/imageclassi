@@ -1,0 +1,13 @@
+from tensorflow import keras
+
+# Define the parameters of the model
+model = keras.Sequential([
+    keras.layers.Flatten(input_shape=(1, nBands)),
+    keras.layers.Dense(14, activation='relu'),
+    keras.layers.Dense(2, activation='softmax')])
+
+# Define the accuracy metrics and parameters
+model.compile(optimizer="adam", loss="sparse_categorical_crossentropy", metrics=["accuracy"])
+
+# Run the model
+model.fit(xTrain, yTrain, epochs=2)
